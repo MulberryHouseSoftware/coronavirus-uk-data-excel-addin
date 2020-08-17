@@ -1,9 +1,9 @@
 {
-  "name": "office-addin-taskpane-react",
-  "version": "0.0.1",
+  "name": "coronavirus-uk-data-excel-addin",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/Office-Addin-TaskPane-React.git"
+    "url": "https://github.com/MulberryHouseSoftware/coronavirus-uk-data-excel-addin.git"
   },
   "license": "MIT",
   "config": {
@@ -24,18 +24,19 @@
     "start:desktop": "office-addin-debugging start manifest.local.xml desktop",
     "start:web": "office-addin-debugging start manifest.local.xml web",
     "stop": "office-addin-debugging stop manifest.local.xml",
+    "stop:production": "office-addin-debugging stop manifest.production.xml",
     "validate:local": "office-addin-manifest validate manifest.local.xml",
     "validate": "office-addin-manifest validate manifest.production.xml",
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "core-js": "^3.1.4",
+    "core-js": "^3.6.5",
     "es6-promise": "^4.2.8",
     "lodash.startcase": "^4.4.0",
-    "office-ui-fabric-react": "^7.10.0",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
+    "office-ui-fabric-react": "^7.128.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
