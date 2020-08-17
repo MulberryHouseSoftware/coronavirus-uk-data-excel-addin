@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import { IconButton, IIconProps } from "office-ui-fabric-react";
 
 const Container = styled.div`
   display: flex;
@@ -13,8 +12,6 @@ const Container = styled.div`
 
 const LogoWrapper = styled.div``;
 
-const emojiIcon: IIconProps = { iconName: "Settings" };
-
 const BrandBar = () => {
   return (
     <Container>
@@ -23,7 +20,6 @@ const BrandBar = () => {
           <img height="48" src="assets/logo.svg" alt="Mulberry House Software" title="Mulberry House Software" />
         </a>
       </LogoWrapper>
-      <IconButton iconProps={emojiIcon} title="Settings" ariaLabel="Settings" />
     </Container>
   );
 };
