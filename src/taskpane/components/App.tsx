@@ -103,9 +103,9 @@ export default function App({ title, isOfficeInitialized }: AppProps) {
         </div>
         <div className="ms-Grid ms-motion-fadeIn ms-motion-duration-4" dir="ltr">
           <Text variant="small">
-            This add-in uses the offical UK government{" "}
+            This add-in uses the official UK government{" "}
             <Link href="https://coronavirus.data.gov.uk/developers-guide">API</Link>, which gives access to the full
-            range of <Link href="https://coronavirus.data.gov.uk/about-data">data</Link> in the offical{" "}
+            range of <Link href="https://coronavirus.data.gov.uk/about-data">data</Link> in the official{" "}
             <Link href="https://coronavirus.data.gov.uk/">&quot;Coronavirus (COVID-19) in the UK&quot;</Link> site.
           </Text>
         </div>
