@@ -73,12 +73,12 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with Coronavirus UK Data"/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Coronavirus UK Data"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="Coronavirus UK Data"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Coronavirus UK Data taskpane"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Click the 'Show Coronavirus UK Data' button to get started."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show Coronavirus UK Data"/>
+        <bt:String id="GetStarted.Description" DefaultValue="Click the 'Show Coronavirus UK Data taskpane' button to get started."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show Coronavirus UK Data taskpane"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
