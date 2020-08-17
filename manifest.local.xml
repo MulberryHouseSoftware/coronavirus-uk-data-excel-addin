@@ -4,7 +4,7 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Mulberry House Software</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Coronavirus UK Data"/>
+  <DisplayName DefaultValue="Coronavirus UK Data (Local)"/>
   <Description DefaultValue="Access up to the date Coronavirus data in Excel."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
