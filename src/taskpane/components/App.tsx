@@ -1,5 +1,14 @@
 import * as React from "react";
-import { IDropdownOption, Stack, IStackStyles, IStackTokens, Link, Text } from "office-ui-fabric-react";
+import {
+  IDropdownOption,
+  Stack,
+  MessageBar,
+  MessageBarType,
+  IStackStyles,
+  IStackTokens,
+  Link,
+  Text
+} from "office-ui-fabric-react";
 import Progress from "./Progress";
 import BrandBar from "./BrandBar";
 import Controls from "./Controls";
@@ -22,6 +31,8 @@ export interface AppProps {
 }
 
 export default function App({ title, isOfficeInitialized }: AppProps) {
+  const [hasError, setHasError] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<Error>(null);
   const [areaType, setAreaType] = React.useState<IDropdownOption>({ key: "nation", text: "Nation" });
   const [areaName, setAreaName] = React.useState<object>({
     nation: { key: "England", text: "England" },
@@ -75,9 +86,13 @@ export default function App({ title, isOfficeInitialized }: AppProps) {
         rangeToPopulate.values = values;
 
         await context.sync();
+
+        setHasError(false);
       });
     } catch (error) {
       console.error(error);
+      setError(error);
+      setHasError(true);
     }
   };
 
@@ -110,6 +125,16 @@ export default function App({ title, isOfficeInitialized }: AppProps) {
           </Text>
         </div>
       </Stack>
+      {hasError && (
+        <MessageBar
+          messageBarType={MessageBarType.error}
+          isMultiline={false}
+          onDismiss={() => setHasError(false)}
+          dismissButtonAriaLabel="Close"
+        >
+          {error.message}
+        </MessageBar>
+      )}
       <BrandBar />
     </Stack>
   );
