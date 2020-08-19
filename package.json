@@ -30,7 +30,7 @@
     "watch": "webpack --mode development --watch",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token 7za7p7b5012"
+    "chromatic": "npx chromatic"
   },
   "dependencies": {
     "axios": "^0.19.2",
