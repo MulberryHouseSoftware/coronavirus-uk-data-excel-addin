@@ -29,7 +29,8 @@
     "validate": "office-addin-manifest validate manifest.production.xml",
     "watch": "webpack --mode development --watch",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token 7za7p7b5012"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -58,6 +59,7 @@
     "@types/webpack": "^4.4.34",
     "@types/webpack-dev-server": "^3.1.6",
     "babel-loader": "^8.1.0",
+    "chromatic": "^5.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.0.0",
