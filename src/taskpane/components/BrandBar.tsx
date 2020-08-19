@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import logo from "../../../assets/logo.svg";
 
 const Container = styled.div`
   display: flex;
@@ -12,16 +13,14 @@ const Container = styled.div`
 
 const LogoWrapper = styled.div``;
 
-const BrandBar = () => {
+export const BrandBar = () => {
   return (
     <Container>
       <LogoWrapper>
         <a href="https://www.mulberryhousesoftware.com/">
-          <img height="48" src="assets/logo.svg" alt="Mulberry House Software" title="Mulberry House Software" />
+          <img height="48" src={logo} alt="Mulberry House Software" title="Mulberry House Software" />
         </a>
       </LogoWrapper>
     </Container>
   );
 };
-
-export default BrandBar;

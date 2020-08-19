@@ -9,9 +9,9 @@ import {
   Link,
   Text
 } from "office-ui-fabric-react";
-import Progress from "./Progress";
-import BrandBar from "./BrandBar";
-import Controls from "./Controls";
+import { Progress } from "./Progress";
+import { BrandBar } from "./BrandBar";
+import { Controls } from "./Controls";
 import { getData } from "../../lib/getData";
 /* global Button, console, Excel, Progress */
 
@@ -30,7 +30,7 @@ export interface AppProps {
   isOfficeInitialized: boolean;
 }
 
-export default function App({ title, isOfficeInitialized }: AppProps) {
+export function App({ title, isOfficeInitialized }: AppProps) {
   const [hasError, setHasError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<Error>(null);
   const [areaType, setAreaType] = React.useState<IDropdownOption>({ key: "nation", text: "Nation" });
@@ -97,9 +97,7 @@ export default function App({ title, isOfficeInitialized }: AppProps) {
   };
 
   if (!isOfficeInitialized) {
-    return (
-      <Progress title={title} logo="assets/logo-filled.png" message="Please sideload your addin to see app body." />
-    );
+    return <Progress title={title} message="Please sideload your addin to see app body." />;
   }
 
   return (

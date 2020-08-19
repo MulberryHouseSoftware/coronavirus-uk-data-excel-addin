@@ -77,7 +77,7 @@ export interface ControlsProps {
   onClick: () => void;
 }
 
-export default function Controls({
+export function Controls({
   areaType,
   areaName,
   metrics,
