@@ -12,8 +12,6 @@ import {
 import { Progress } from "./Progress";
 import { BrandBar } from "./BrandBar";
 import { Controls } from "./Controls";
-import { getData } from "../../lib/getData";
-/* global Excel */
 
 const stackStyles: IStackStyles = {
   root: {
@@ -29,9 +27,10 @@ const stackTokens: IStackTokens = {
 export interface AppProps {
   title: string;
   isOfficeInitialized: boolean;
+  onInsertRange: (areaType: string | number, areaName: string, metrics: string[]) => void;
 }
 
-export function App({ title, isOfficeInitialized }: AppProps) {
+export function App({ title, isOfficeInitialized, onInsertRange }: AppProps) {
   const [hasError, setHasError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<Error>(null);
   const [areaType, setAreaType] = React.useState<IDropdownOption>({ key: "nation", text: "Nation" });
@@ -56,50 +55,21 @@ export function App({ title, isOfficeInitialized }: AppProps) {
     }
   };
 
-  const click = async () => {
+  if (!isOfficeInitialized) {
+    return <Progress title={title} message="Please sideload your addin to see app body." />;
+  }
+
+  const handleInsertRange = async () => {
     try {
-      await Excel.run(async context => {
-        const range = context.workbook.getSelectedRange();
+      onInsertRange(areaType.key, areaName[areaType.key].key, metrics);
 
-        const filters = [`areaType=${areaType.key}`];
-
-        if (areaType.key !== "overview") {
-          filters.push(`areaName=${areaName[areaType.key].key}`);
-        }
-
-        const structure = [...metrics.map(d => [d, d])].reduce((obj, [key, val]) => {
-          obj[key] = val;
-          return obj;
-        }, {});
-
-        const apiParams = {
-          filters: filters.join(";"),
-          structure: JSON.stringify(structure)
-        };
-
-        const data = await getData(apiParams);
-        const values = [Object.keys(data.data[0]), ...data.data.map(d => Object.values(d))];
-
-        const firstCell = range.getCell(0, 0);
-        const lastCell = range.getCell(values.length - 1, values[0].length - 1);
-        const rangeToPopulate = firstCell.getBoundingRect(lastCell).insert(Excel.InsertShiftDirection.down);
-
-        rangeToPopulate.values = values;
-
-        await context.sync();
-
-        setHasError(false);
-      });
+      setHasError(false);
     } catch (error) {
       console.error(error);
       setError(error);
       setHasError(true);
     }
   };
-
-  if (!isOfficeInitialized) {
-    return <Progress title={title} message="Please sideload your addin to see app body." />;
-  }
 
   return (
     <Stack verticalAlign="space-between" styles={stackStyles}>
@@ -112,7 +82,7 @@ export function App({ title, isOfficeInitialized }: AppProps) {
             onChangeAreaName={onChangeAreaName}
             metrics={metrics}
             onChangeMetrics={onChangeMetrics}
-            onClick={click}
+            onClick={handleInsertRange}
           />
           <Text variant="xSmall">
             This add-in uses the official UK government{" "}

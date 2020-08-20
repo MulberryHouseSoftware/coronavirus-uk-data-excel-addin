@@ -1,6 +1,7 @@
 import "office-ui-fabric-react/dist/css/fabric.min.css";
 import { App } from "./components/App";
 import { AppContainer } from "react-hot-loader";
+import { insertRange } from "../lib/insertRange";
 import { initializeIcons } from "office-ui-fabric-react/lib/Icons";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -15,7 +16,7 @@ const title = "Coronavirus UK Data";
 const render = Component => {
   ReactDOM.render(
     <AppContainer>
-      <Component title={title} isOfficeInitialized={isOfficeInitialized} />
+      <Component title={title} isOfficeInitialized={isOfficeInitialized} onInsertRange={insertRange} />
     </AppContainer>,
     document.getElementById("container")
   );
