@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Spinner, SpinnerType, Stack, IStackTokens, Text } from "office-ui-fabric-react";
-import icon from "../../../assets/icon.svg";
 
 export interface ProgressProps {
   message: string;
@@ -19,7 +18,7 @@ export class Progress extends React.Component<ProgressProps> {
     return (
       <section>
         <Stack horizontalAlign="center" tokens={stackTokens}>
-          <img width="90" height="90" src={icon} alt={title} title={title} />
+          <img width="90" height="90" src="assets/icon.svg" alt={title} title={title} />
           <Text variant="xLarge" as="h1">
             {title}
           </Text>
