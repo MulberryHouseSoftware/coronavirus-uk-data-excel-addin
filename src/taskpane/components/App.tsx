@@ -73,7 +73,7 @@ export function App({ title, isOfficeInitialized, onInsertRange }: AppProps) {
 
   return (
     <Stack verticalAlign="space-between" styles={stackStyles}>
-      <div style={{ overflowY: "scroll" }}>
+      <div style={{ overflowY: "auto" }}>
         <Stack verticalAlign="space-between" styles={stackStyles} tokens={stackTokens}>
           <Controls
             areaType={areaType}
