@@ -12,8 +12,6 @@ import {
 import { mergeStyles } from "office-ui-fabric-react/lib/Styling";
 import { useId } from "@uifabric/react-hooks";
 
-/* global Button, console, Excel, Header, HeroList, HeroListItem, Progress */
-
 const iconClass = mergeStyles({
   fontSize: 14,
   height: 14,

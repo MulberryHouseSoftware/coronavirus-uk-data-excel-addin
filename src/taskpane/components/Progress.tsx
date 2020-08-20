@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Spinner, SpinnerType, Stack, IStackTokens, Text } from "office-ui-fabric-react";
 import icon from "../../../assets/icon.svg";
-/* global Spinner */
 
 export interface ProgressProps {
   message: string;

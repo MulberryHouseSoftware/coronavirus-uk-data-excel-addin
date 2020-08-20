@@ -13,7 +13,7 @@ import { Progress } from "./Progress";
 import { BrandBar } from "./BrandBar";
 import { Controls } from "./Controls";
 import { getData } from "../../lib/getData";
-/* global Button, console, Excel, Progress */
+/* global Excel */
 
 const stackStyles: IStackStyles = {
   root: {
