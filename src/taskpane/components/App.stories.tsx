@@ -8,14 +8,20 @@ export default {
   component: App
 } as Meta;
 
-const Template: Story<AppProps> = args => <App {...args} />;
+const Template: Story<AppProps> = args => (
+  <div style={{ width: "350px", height: "378px", border: "1px solid black" }}>
+    <App {...args} />
+  </div>
+);
 
 export const OfficeInitialized = Template.bind({});
 OfficeInitialized.args = {
-  isOfficeInitialized: true
+  isOfficeInitialized: true,
+  title: "Coronavirus UK Data"
 };
 
 export const OfficeNotInitialized = Template.bind({});
 OfficeNotInitialized.args = {
-  isOfficeInitialized: false
+  isOfficeInitialized: false,
+  title: "Coronavirus UK Data"
 };

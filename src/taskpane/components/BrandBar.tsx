@@ -8,7 +8,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #f4f4f4;
-  padding: 4px 12px;
+  padding: 4px 12px 0px 12px;
 `;
 
 const LogoWrapper = styled.div``;
@@ -17,8 +17,8 @@ export const BrandBar = () => {
   return (
     <Container>
       <LogoWrapper>
-        <a href="https://www.mulberryhousesoftware.com/">
-          <img height="48" src={logo} alt="Mulberry House Software" title="Mulberry House Software" />
+        <a href="https://www.mulberryhousesoftware.com/" rel="noopener noreferrer" target="_blank">
+          <img height="32" src={logo} alt="Mulberry House Software" title="Mulberry House Software" />
         </a>
       </LogoWrapper>
     </Container>

@@ -22,7 +22,8 @@ const stackStyles: IStackStyles = {
 };
 
 const stackTokens: IStackTokens = {
-  padding: `12px 8px 12px 4px`
+  childrenGap: 12,
+  padding: `4px 12px 12px 12px`
 };
 
 export interface AppProps {
@@ -102,8 +103,8 @@ export function App({ title, isOfficeInitialized }: AppProps) {
 
   return (
     <Stack verticalAlign="space-between" styles={stackStyles}>
-      <Stack verticalAlign="space-between" styles={stackStyles} tokens={stackTokens}>
-        <div className="ms-Grid" dir="ltr">
+      <div style={{ overflowY: "scroll" }}>
+        <Stack verticalAlign="space-between" styles={stackStyles} tokens={stackTokens}>
           <Controls
             areaType={areaType}
             onChangeAreaType={onChangeAreaType}
@@ -113,16 +114,14 @@ export function App({ title, isOfficeInitialized }: AppProps) {
             onChangeMetrics={onChangeMetrics}
             onClick={click}
           />
-        </div>
-        <div className="ms-Grid ms-motion-fadeIn ms-motion-duration-4" dir="ltr">
-          <Text variant="small">
+          <Text variant="xSmall">
             This add-in uses the official UK government{" "}
             <Link href="https://coronavirus.data.gov.uk/developers-guide">API</Link>, which gives access to the full
             range of <Link href="https://coronavirus.data.gov.uk/about-data">data</Link> in the official{" "}
             <Link href="https://coronavirus.data.gov.uk/">&quot;Coronavirus (COVID-19) in the UK&quot;</Link> site.
           </Text>
-        </div>
-      </Stack>
+        </Stack>
+      </div>
       {hasError && (
         <MessageBar
           messageBarType={MessageBarType.error}

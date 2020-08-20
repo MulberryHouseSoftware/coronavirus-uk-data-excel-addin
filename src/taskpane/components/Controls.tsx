@@ -1,6 +1,25 @@
 import * as React from "react";
-import { PrimaryButton, Dropdown, IDropdownOption, IDropdownStyles, Stack, Text } from "office-ui-fabric-react";
+import {
+  PrimaryButton,
+  Dropdown,
+  IDropdownOption,
+  IDropdownStyles,
+  Stack,
+  TooltipHost,
+  FontIcon,
+  Label
+} from "office-ui-fabric-react";
+import { mergeStyles } from "office-ui-fabric-react/lib/Styling";
+import { useId } from "@uifabric/react-hooks";
+
 /* global Button, console, Excel, Header, HeroList, HeroListItem, Progress */
+
+const iconClass = mergeStyles({
+  fontSize: 14,
+  height: 14,
+  width: 14,
+  margin: "7px 7px 0 7px"
+});
 
 const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { maxWidth: 200 } };
 
@@ -65,7 +84,7 @@ const metricsOptions = [
   { key: "newPillarThreeTestsByPublishDate", text: "newPillarThreeTestsByPublishDate" }
 ];
 
-const stackTokens = { childrenGap: 32 };
+const stackTokens = { childrenGap: 8 };
 
 export interface ControlsProps {
   areaType: IDropdownOption;
@@ -86,12 +105,20 @@ export function Controls({
   onChangeMetrics,
   onClick
 }: ControlsProps) {
+  const tooltipId = useId("tooltip");
+
   return (
     <Stack tokens={stackTokens}>
       <Stack>
-        <Text>Data can be filtered by Nation, Region, or NHS Region.</Text>
+        <Label>
+          <Stack horizontal verticalAlign="center">
+            Area type{" "}
+            <TooltipHost content="Data can be filtered by Nation, Region, or NHS Region." id={tooltipId}>
+              <FontIcon iconName="Info" className={iconClass} />
+            </TooltipHost>
+          </Stack>
+        </Label>
         <Dropdown
-          label="Area type"
           selectedKey={areaType ? areaType.key : undefined}
           onChange={onChangeAreaType}
           placeholder="Select an option"
@@ -100,9 +127,18 @@ export function Controls({
         />
       </Stack>
       <Stack>
-        <Text>Choose which area you want to see data for (only a single area can be selected).</Text>
+        <Label>
+          <Stack horizontal verticalAlign="center">
+            {areaType.text}{" "}
+            <TooltipHost
+              content="Choose which area you want to see data for (only a single area can be selected)."
+              id={tooltipId}
+            >
+              <FontIcon iconName="Info" className={iconClass} />
+            </TooltipHost>
+          </Stack>
+        </Label>
         <Dropdown
-          label={areaType.text}
           selectedKey={areaName ? areaName.key : undefined}
           onChange={onChangeAreaName}
           placeholder="Select an option"
@@ -111,10 +147,19 @@ export function Controls({
         />
       </Stack>
       <Stack>
-        <Text>Choose which metrics you wish to be included (multiple metrics can be selected).</Text>
+        <Label>
+          <Stack horizontal verticalAlign="center">
+            Metrics{" "}
+            <TooltipHost
+              content="Choose which metrics you wish to be included (multiple metrics can be selected)."
+              id={tooltipId}
+            >
+              <FontIcon iconName="Info" className={iconClass} />
+            </TooltipHost>
+          </Stack>
+        </Label>
         <Dropdown
           placeholder="Select metrics"
-          label="Metrics"
           selectedKeys={metrics}
           onChange={onChangeMetrics}
           multiSelect
@@ -122,7 +167,6 @@ export function Controls({
         />
       </Stack>
       <Stack>
-        <Text>Data will be inserted using the currently selected cell as the top left of the new range.</Text>
         <PrimaryButton style={{ marginTop: "12px" }} onClick={onClick}>
           Insert data
         </PrimaryButton>
